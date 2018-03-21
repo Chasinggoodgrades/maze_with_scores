@@ -4,6 +4,7 @@ import intersects
 from walls import *
 from random import randint
 from random import random
+from random import randrange
 import random
 import time
 # Initialize game engine
@@ -33,7 +34,7 @@ YELLOW = (255, 255, 0)
 GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
 
-
+BIGPAPA = pygame.image.load('Chase.png')
 
 
 # Make a player
@@ -41,6 +42,7 @@ player1 =  [200, 150, 20, 20]
 vel1 = [0, 0]
 player1_speed = 5
 score1 = 0
+
 
 # Make coins
 coin1 = [300, 500, 20, 20]
@@ -51,8 +53,9 @@ coins = [coin1, coin2, coin3]
 
 def splash_screen():
     font = pygame.font.Font(None, 48)
-    text = font.render("Welcome To The Maze! Press Spacebar to Play!", 1, RED)
-    screen.blit(text, [0, 200])
+    text = font.render("Welcome To The Maze! Press Spacebar to Play!", 1, BLACK)
+    screen.blit(BIGPAPA, [0, 0])
+    screen.blit(text, [0, 100])
     
 def game_play():
         pygame.draw.rect(screen, WHITE, player1)

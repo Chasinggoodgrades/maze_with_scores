@@ -122,14 +122,43 @@ wall106 = [700, 230, 10, 50]
 wall107 = [700, 160, 10, 50]
 wall108 = [700, 90, 10, 50]
 '''3rd layer'''
-#TOP
+#LEFT
 wall109 = [120, 120, 10, 50]
 wall110 = [120, 190, 10, 50]
 wall111 = [120, 260, 10, 50]
 wall112 = [120, 330, 10, 50]
 wall113 = [120, 400, 10, 70]
-wall114 = [120, 470, 10, 50]
-wall115 = [120, 540, 10, 50]
+
+#TOP
+wall114 = [120, 120, 50, 10]
+wall115 = [190, 120, 50, 10]
+wall116 = [260, 120, 50, 10]
+wall117 = [330, 120, 50, 10]
+wall118 = [400, 120, 50, 10]
+wall119 = [470, 120, 50, 10]
+wall120 = [540, 120, 50, 10]
+wall121 = [610, 120, 60, 10]
+
+#BOTTOM
+wall122 = [120, 470, 50, 10]
+wall123 = [190, 470, 50, 10]
+wall124 = [260, 470, 50, 10]
+wall125 = [330, 470, 50, 10]
+wall126 = [400, 470, 50, 10]
+wall127 = [470, 470, 50, 10]
+wall128 = [540, 470, 50, 10]
+wall129 = [610, 470, 60, 10]
+
+#RIGHT
+wall130 = [670, 400, 10, 80]
+wall131 = [670, 120, 10, 50]
+wall132 = [670, 190, 10, 50]
+wall133 = [670, 260, 10, 50]
+wall134 = [670, 330, 10, 50]
+
+'''4th layer'''
+#Top
+wall135 = [150, 150, 50, 10] 
 
 
 #Boarders
@@ -154,4 +183,7 @@ walls = [wall1, wall2, wall3, wall4, wall5, wall6, wall7,
          wall88, wall89, wall90, wall91, wall92, wall93, wall94, wall95,
          wall96, wall97, wall98, wall99, wall100, wall101, wall102, wall103,
          wall104, wall105, wall106, wall107, wall108, wall109, wall110,
-         wall111, wall112, wall113]
+         wall111, wall112, wall113, wall114, wall115, wall116, wall117,
+         wall118, wall119, wall120, wall121, wall122, wall123, wall124,
+         wall125, wall126, wall127, wall128, wall129, wall130, wall131,
+         wall132, wall133, wall134, wall135]
