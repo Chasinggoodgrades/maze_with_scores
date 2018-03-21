@@ -2,7 +2,7 @@
 
 Welcome to the maze! Run the maze why dont ya?
 
-##How to Play
+## How to Play
 
 Use the arrow keys to move around
 
