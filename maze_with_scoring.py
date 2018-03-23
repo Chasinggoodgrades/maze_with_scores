@@ -1,10 +1,13 @@
-4# Imports
+#############################
+# By: Chase Poland          #
+# Date: 3/22/18             #
+#############################
+
+
+# Imports
 import pygame
 import intersects
 from walls import *
-from random import randint
-from random import random
-from random import randrange
 import random
 import time
 # Initialize game engine
@@ -15,7 +18,7 @@ pygame.init()
 WIDTH = 800
 HEIGHT = 600
 SIZE = (WIDTH, HEIGHT)
-TITLE = "Maze"
+TITLE = "Collect The Coins! "
 screen = pygame.display.set_mode(SIZE)
 pygame.display.set_caption(TITLE)
 
@@ -43,45 +46,74 @@ vel1 = [0, 0]
 player1_speed = 5
 score1 = 0
 
+#Sounds
+pygame.mixer.music.load("sounds/snow.ogg")
 
 # Make coins
-coin1 = [300, 500, 20, 20]
+coin1 = [300, 510, 20, 20]
 coin2 = [400, 200, 20, 20]
-coin3 = [150, 150, 20, 20]
-
-coins = [coin1, coin2, coin3]
+coin3 = [130, 130, 20, 20]
+coin4 = [130, 260, 20, 20]
 
 def splash_screen():
     font = pygame.font.Font(None, 48)
     text = font.render("Welcome To The Maze! Press Spacebar to Play!", 1, BLACK)
+    text1 = font.render("Collect the Coins!!!", 1, BLACK)
     screen.blit(BIGPAPA, [0, 0])
     screen.blit(text, [0, 100])
+    screen.blit(text1, [100, 150])
+
+def restart_screen():
+    screen.fill(BLACK)
+    for w in walls:
+        pygame.draw.rect(screen, BLACK, w)
+    font = pygame.font.Font(None, 48)
+    text = font.render("Press R to play again!", 1, BLACK)
+    screen.blit(text, [0, 100])
+
+def setup():
+    global player1, vel1, player1_speed, score1, coins, time_remaining, ticks
+    player1 = [10, 10, 20, 20]
+    vel1 = [0,0]
+    player1_speed = 5
+    score1 = 0
+    win = False
+    coins = [coin1, coin2, coin3, coin4]
+    time_remaining = 10
+    ticks = 0
+
     
 def game_play():
         pygame.draw.rect(screen, WHITE, player1)
         
         for w in walls:
-            pygame.draw.rect(screen, rand_color, w)
+            pygame.draw.rect(screen, BLUE, w)
 
         for c in coins:
-            pygame.draw.rect(screen, YELLOW, c)
+            pygame.draw.rect(screen, rand_color, c)
         
         font = pygame.font.Font(None, 24)
         text = font.render(str(score1), 1, WHITE)
+        time_text = font.render(str(time_remaining), 1, WHITE)
         screen.blit(text, [1, 255])
+        screen.blit(time_text, [400, 300])
     
 def end_game():
     screen.fill(BLACK)
     for w in walls:
         pygame.draw.rect(screen, BLACK, w)
     font = pygame.font.Font(None, 48)
-    text = font.render("You win!", 1, WHITE)
-    screen.blit(text, [200, 150])
+    text = font.render("Press 'R' to restart the game!", 1, WHITE)
+    s_text = font.render("Your score was :  " + str(score1), 1, WHITE)
+    screen.blit(text, [230, 150])
+    screen.blit(s_text, [230, 100])
 
 # Game loop
+setup()
 win = False
 done = False
 play = False
+restart = False
 
 while not done:
     # Event processing (React to key presses, mouse clicks, etc.)
@@ -89,6 +121,16 @@ while not done:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             done = True
+
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE:
+                playing = True
+                pygame.mixer.music.play(-1)
+
+            elif event.key == pygame.K_r:
+                playing = False
+                win = False
+                setup()
 
     pressed = pygame.key.get_pressed()
 
@@ -106,15 +148,26 @@ while not done:
     else:
         vel1[0] = 0
 
+    if play == True:
+        ticks += 1
+
+        if ticks % refresh_rate == 0:
+            time_remaining -= 1
+
+        if time_remaining == 0:
+            play = False
+            restart = True
+
     if space:
         play = True
-
+        
     if up:
         vel1[1] = -player1_speed
     elif down:
         vel1[1] = player1_speed
     else:
         vel1[1] = 0
+        
             
     rand_color = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
     # Game logic (Check for collisions, update points, etc.)
@@ -163,10 +216,11 @@ while not done:
     if len(coins) == 0:
         win = True
 
-        
-    # Drawing code (Describe the picture. It isn't actually drawn yet.)
     screen.fill(BLACK)
 
+
+    if restart == True:
+        restart_screen()
 
     if play == False:
         splash_screen()
@@ -176,6 +230,9 @@ while not done:
 
     if win == True:
         end_game()
+        
+    # Drawing Functions Executed (Describe the picture. It isn't actually drawn yet.)
+
     # Update screen (Actually draw the picture in the window.)
     pygame.display.flip()
 
