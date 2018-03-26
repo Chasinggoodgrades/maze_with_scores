@@ -158,9 +158,22 @@ wall134 = [670, 330, 10, 50]
 
 '''4th layer'''
 #Top
-wall135 = [150, 150, 50, 10] 
+wall135 = [150, 150, 50, 10]
+wall136 = [220, 150, 50, 10]
+wall137 = [290, 150, 50, 10]
+wall138 = [360, 150, 50, 10]
+wall139 = [430, 150, 50, 10]
+wall140 = [500, 150, 50, 10]
+wall141 = [570, 150, 70, 10]
 
+#Right
+wall142 = [640, 150, 10, 50]
+wall143 = [640, 220, 10, 50]
+wall144 = [640, 290, 10, 50]
+wall145 = [640, 360, 10, 80]
 
+#Bottom
+wall146 = [570, 440, 80, 10]
 #Boarders
 wall4 =  [0, 0, 800, 10]
 wall5 =  [0, 0, 10, 600]
@@ -186,4 +199,5 @@ walls = [wall1, wall2, wall3, wall4, wall5, wall6, wall7,
          wall111, wall112, wall113, wall114, wall115, wall116, wall117,
          wall118, wall119, wall120, wall121, wall122, wall123, wall124,
          wall125, wall126, wall127, wall128, wall129, wall130, wall131,
-         wall132, wall133, wall134, wall135]
+         wall132, wall133, wall134, wall135, wall136, wall137, wall138, wall139,
+         wall140, wall141, wall142, wall143, wall144, wall145, wall146]

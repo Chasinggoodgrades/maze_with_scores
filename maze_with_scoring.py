@@ -37,7 +37,7 @@ YELLOW = (255, 255, 0)
 GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
 
-BIGPAPA = pygame.image.load('Chase.png')
+#BIGPAPA = pygame.image.load('Chase.png')
 
 
 # Make a player
@@ -47,7 +47,7 @@ player1_speed = 5
 score1 = 0
 
 #Sounds
-pygame.mixer.music.load("sounds/snow.ogg")
+#pygame.mixer.music.load("sounds/snow.ogg")
 
 # Make coins
 coin1 = [300, 510, 20, 20]
@@ -59,7 +59,7 @@ def splash_screen():
     font = pygame.font.Font(None, 48)
     text = font.render("Welcome To The Maze! Press Spacebar to Play!", 1, BLACK)
     text1 = font.render("Collect the Coins!!!", 1, BLACK)
-    screen.blit(BIGPAPA, [0, 0])
+    #screen.blit(BIGPAPA, [0, 0])
     screen.blit(text, [0, 100])
     screen.blit(text1, [100, 150])
 
@@ -125,7 +125,7 @@ while not done:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE:
                 playing = True
-                pygame.mixer.music.play(-1)
+                #pygame.mixer.music.play(-1)
 
             elif event.key == pygame.K_r:
                 playing = False
